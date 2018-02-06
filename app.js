@@ -4,9 +4,27 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+// // playground for me starts here
+// const { todos } = require('./models/todos');
+
+// var obj = {
+//   text : 'fly in sky',
+//   completed : false
+// }
+
+// var newTodo = new Todo(obj);
+
+// newTodo.save().then((docs) => {
+//   console.log(JSON.stringify(docs, undefined, 2));
+// }).catch((e) => {
+//   console.log('error occured in insertion ', e);
+// });
+// // playground for me ends here
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var todos = require('./routes/todos');
 
 var app = express();
 
@@ -24,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/todos', todos);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
